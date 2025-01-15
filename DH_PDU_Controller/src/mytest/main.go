@@ -1,16 +1,10 @@
 package main
 
-import (
-	"fmt"
-)
+import "C"
 
-func main() {
-	var f string
-
-	for {
-		fmt.Print("Input string: ")
-		fmt.Scanf("%s\n", &f)
-		fmt.Println(f)
-	}
-
+//export Add
+func Add(a, b int) int {
+	return a + b
 }
+
+func main() {}
