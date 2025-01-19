@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>计算属性</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        姓: <input type="text" v-model="firstname"><br><br>
+        名: <input type="text" v-model="lastname"><br><br>
+        全名: <span>{{fullname}}</span><br>
+        全名: <span>{{fullname}}</span><br>
+        全名: <span>{{fullname}}</span><br>
+        全名: <span>{{fullname}}</span><br>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          firstname: "张",
+          lastname: "三",
+        },
+        // 计算属性,多次调用时，不会调用多次，会读取缓存中的内容
+        // computed: {
+        //   fullname: {
+        //     get(){
+        //       console.log("computed 中的get函数被调用了...")
+        //       return this.firstname.slice(0,3) + "-" + this.lastname.slice(0, 3)
+        //     }
+        //   }
+        // }
+        // 当只有get函数时，计算属性可以简写
+        computed: {
+          fullname(){
+            console.log("computed 中的get函数被调用了...")
+            return this.firstname.slice(0,3) + "-" + this.lastname.slice(0, 3)
+          }
+        }
+
+      });
+</script>
+  </body>
+</html>

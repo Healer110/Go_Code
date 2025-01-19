@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>监视属性</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <h2>今天天气很{{status}}</h2><br>
+        <button @click="switchWeather">切换天气</button>
+         <!-- 这里可以直接在click后面写表达式 -->
+        <!-- <button @click="isHot=!isHot">切换天气</button> -->
+
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: '#root',
+        data: {
+          isHot: true,
+        },
+        methods: {
+            switchWeather() {
+                this.isHot = !this.isHot
+            }
+        },
+        computed:{
+            status() {
+                return this.isHot? "炎热" : "凉爽"
+            }
+        },
+
+        // 监视
+        watch: {
+            isHot: {
+                handler(newValue, oldValue) {
+                    console.log('isHost被修改了：', newValue, oldValue)
+                }
+            }
+        }
+
+      });
+</script>
+  </body>
+</html>

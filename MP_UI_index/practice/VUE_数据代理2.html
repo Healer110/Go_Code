@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VUE_数据代理2</title>
+    <script src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 数据代理，通过一个对象代理，对另一个对象中的属性操作,读或者写 -->
+    <script type="text/javascript">
+        let obj1 = {x:100}
+        let obj2 = {y:200}
+
+        // 让obj2代理obj1
+        Object.defineProperty(obj2, 'x', {
+            get(){
+                return obj1.x
+            },
+            set(value){
+                obj1.x = value
+            }
+        })
+
+    </script>
+  </body>
+</html>
